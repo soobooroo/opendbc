@@ -91,7 +91,7 @@ class CarState(CarStateBase):
       #  brake while engaged at a stop. ES_Status and ES_DashStatus->Signal7 correctly fell, but is either missing or
       #  always zero on hybrids. Probably need to split angle & hybrid. 0x27 and 0x225 on hybrids may work for them.
       if self.CP.flags & SubaruFlags.HYBRID:
-        ret.cruiseState.enabled = cp.vl["Cruise_Status_2"]['Cruise_Activated'] != 0
+        ret.cruiseState.enabled = cp_alt.vl["Cruise_Status_2"]['Cruise_Activated'] != 0
       else:
         ret.cruiseState.enabled = cp_es_brake.vl["ES_Brake"]['Cruise_Activated'] != 0
       
